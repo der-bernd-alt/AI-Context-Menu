@@ -17,7 +17,15 @@ def get_from_clipboard():
 
   return data
 
+def copy_to_clipboard(text: str):
+  win32clipboard.OpenClipboard()
+  win32clipboard.EmptyClipboard()
+  win32clipboard.SetClipboardText(text)
+  win32clipboard.CloseClipboard()
+
 if __name__ == "__main__":
   get_from_clipboard()
+
+  copy_to_clipboard("Random")
 
   # https://stackoverflow.com/a/101167

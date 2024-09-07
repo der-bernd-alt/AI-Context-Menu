@@ -4,7 +4,7 @@ import config
 
 def show_clipboard_text():
     text = clipboard.get_from_clipboard()
-    Gui(text, config.DROPDOWN_VALUES, config.TOOLTIPS)
+    Gui(text, [config["name"] for config in config.PROMPTS])
 
 if __name__ == "__main__":
   # Register the context menu for all windows
