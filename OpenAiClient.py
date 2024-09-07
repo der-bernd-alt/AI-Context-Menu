@@ -21,16 +21,15 @@ class OpenAiClient():
         """
         try:
             # Create a completion using the OpenAI API
-            response = self.client.chat.completions.create(
+            return self.client.chat.completions.create(
                 model=model,
                 messages=[
                     {"role": "user", "content": prompt}
                 ],
-                max_tokens=max_tokens
+                max_tokens=max_tokens,
+                stream=True,
+                stream_options={"include_usage": True},
             )
-            
-            # Extract and return the content of the response
-            return response.choices[0].message.content.strip(), response.usage.total_tokens
         
         except Exception as e:
             raise Exception(e)
