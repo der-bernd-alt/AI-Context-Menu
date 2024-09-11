@@ -3,7 +3,11 @@ import clipboard
 import config
 
 def show_clipboard_text():
-    text = clipboard.get_from_clipboard()
+    try:
+      text = clipboard.get_from_clipboard()
+    except Exception as e:
+      print("Could not get data from clipboard. Make sure you have some text-like data there.")
+      raise e
     Gui(text, [config["name"] for config in config.PROMPTS])
 
 if __name__ == "__main__":
